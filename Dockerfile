@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y hhvm
 RUN /usr/share/hhvm/install_fastcgi.sh && update-rc.d hhvm defaults
 
 # Nginx config
-# ADD default.conf /etc/nginx/sites-enabled/default
+ADD main.conf /etc/nginx/sites-enabled/main
 
 # Set up Supervisord
 RUN apt-get install supervisor -y
@@ -26,8 +26,9 @@ EXPOSE 80
 
 # Testing
 ADD ./start.sh /start.sh
-ADD ./index.php /usr/share/nginx/html/index.php
 ADD supervisord.conf /etc/supervisord.conf
+
+RUN mkdir /var/www
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i 's/user www-data/user root root/' /etc/nginx/nginx.conf
