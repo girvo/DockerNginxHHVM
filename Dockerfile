@@ -30,6 +30,8 @@ ADD ./index.php /usr/share/nginx/html/index.php
 ADD supervisord.conf /etc/supervisord.conf
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN sed -i 's/user www-data/user root root/' /etc/nginx/nginx.conf
+RUN usermod -a -G staff www-data
 
 RUN service nginx stop && service supervisor stop
 
