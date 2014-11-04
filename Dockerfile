@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y hhvm
 RUN /usr/share/hhvm/install_fastcgi.sh && update-rc.d hhvm defaults
 
 # Nginx config
-ADD main.conf /etc/nginx/sites-enabled/main
+ADD nginx.conf /etc/nginx/sites-enabled/main
 
 # Set up Supervisord
 RUN apt-get install supervisor -y
