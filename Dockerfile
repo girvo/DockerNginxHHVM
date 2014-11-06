@@ -32,6 +32,7 @@ RUN mkdir /var/www
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i 's/user www-data/user root root/' /etc/nginx/nginx.conf
+RUN sed -i 's/sendfile on/sendfile off/' /etc/nginx/nginx.conf
 RUN usermod -a -G staff www-data
 
 RUN service nginx stop && service supervisor stop
