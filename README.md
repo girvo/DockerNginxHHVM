@@ -22,3 +22,6 @@ Alternatively, you can run the image in a container directly with:
 docker run -p 80:80 -v /path/to/your/code:/var/www nginx-php5:base
 ````
 
+## License
+
+MIT Licensed, copyright Josh Girvin 2014.
